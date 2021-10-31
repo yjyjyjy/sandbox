@@ -2,7 +2,8 @@ require("@nomiclabs/hardhat-waffle");
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
-console.log(process.env.FOO);
+console.log(process.env.ALCHEMY_API_KEY);
+
 // Go to https://www.alchemyapi.io, sign up, create
 // a new App in its dashboard, and replace "KEY" with its key
 
@@ -12,11 +13,14 @@ console.log(process.env.FOO);
 // Be aware of NEVER putting real Ether into testing accounts
 
 module.exports = {
-  solidity: "0.7.3",
+  defaultNetwork:"kovan",
+  solidity: "0.8.7",
   networks: {
-    ropsten: {
-      url: `https://eth-ropsten.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`,
-      accounts: [`0x${process.env.ROPSTEN_PRIVATE_KEY}`]
+    hardhat: {
+    },
+    kovan: {
+      url: `https://eth-kovan.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`,
+      accounts: [`0x${process.env.KOVAN_PRIVATE_KEY}`]
     }
   }
 };
