@@ -35,6 +35,3 @@ main()
     console.error(error);
     process.exit(1);
   });
-
-
-// 	0x115aff7117901174348822Ddb1ea989B258487ad
