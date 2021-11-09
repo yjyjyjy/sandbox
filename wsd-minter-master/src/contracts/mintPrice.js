@@ -1,0 +1,1 @@
+export const mintPrice = 0.05;
