@@ -13,8 +13,17 @@ pub mod myepicproject {
     Ok(())
   }
 
-  pub fn add_gif(ctx: Context<AddGif>) -> ProgramResult {
+  pub fn add_gif(ctx: Context<AddGif>, gif_link: String) -> ProgramResult {
+
+    // extract these vars from Context to local mutable references
     let base_account = &mut ctx.accounts.base_account;
+    let user = &mut ctx.accounts.user;
+    base_account.gif_list.push(
+        ItemStruct {
+            gif_link: gif_link.to_string(),
+            user_address: *user.to_account_info().key,
+        }
+    );
     base_account.total_gifs += 1;
     Ok(())
   }
@@ -40,10 +49,20 @@ pub struct AddGif<'info> {
     // allow access to a mutable reference to base_account, so I can change the total_gifs value stored there
     #[account(mut)] // without this, fn only changes the var in the fn.
     pub base_account: Account<'info, BaseAccount>,
+    #[account(mut)]
+    pub user: Signer<'info>, // adding Signer so the fn can write to accounts
+}
+
+// Create a custom struct for us to work with.
+#[derive(Debug, Clone, AnchorSerialize, AnchorDeserialize)] // serialize data into birnary format into accounts and de-serialize fr/
+pub struct ItemStruct {
+    pub gif_link: String,
+    pub user_address: Pubkey,
 }
 
 // Tell Solana what we want to store on this account.
 #[account]
 pub struct BaseAccount { // create an account
     pub total_gifs: u64, // and store this var inside
+    pub gif_list: Vec<ItemStruct>, // basically an array of ItemStruct which is custom struct
 }
