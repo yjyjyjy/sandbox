@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+declare_id!("9YP5snNm1YQR8qu4syctHtNmve3vmgF2cwXii7VARmJN");
 
 #[program]
 pub mod myepicproject {
@@ -26,6 +26,21 @@ pub mod myepicproject {
     );
     base_account.total_gifs += 1;
     Ok(())
+  }
+
+  pub fn send_sol(ctx: Context<SendSol>, amount: u64) -> ProgramResult {
+    let ix = anchor_lang::solana_program::system_instruction::transfer(
+      &ctx.accounts.from.key(),
+      &ctx.accounts.to.key(),
+      amount,
+    );
+    anchor_lang::solana_program::program::invoke(
+      &ix,
+      &[
+        ctx.accounts.from.to_account_info(),
+        ctx.accounts.to.to_account_info(),
+      ]
+    )
   }
 }
 
@@ -58,6 +73,16 @@ pub struct AddGif<'info> {
 pub struct ItemStruct {
     pub gif_link: String,
     pub user_address: Pubkey,
+}
+
+// Send Sol
+#[derive(Accounts)]
+pub struct SendSol<'info> {
+  #[account(mut)]
+  from: Signer<'info>,
+  #[account(mut)]
+  to: target_account<'info>,
+  system_program: Program<'info, System>,
 }
 
 // Tell Solana what we want to store on this account.
