@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "hireacross",
+  "private_key_id": "f827f800318b5e57cfc6f077cf7107d7f6121426",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCMWcpEMEtXDync\nlip/Vo8rIfTcU320EQ9e6V01XvEqqNToHOAMIZSuMDhZZkKmdTmPy7GrRrqAf78E\nw5qgjtwl7oRaANYS1lOkVufaMejR7WZYxkxegoiV1aGc2zRMTz6p5apfpf4KLZx4\n2aZoK5dicQ9RLiKzNpsuX3l5jKppI8SGBao0HodPTuSrJe2yE6PuimFaGjiL+g/3\nSyWnEMjJerfUBQ9F8GzdxNlR7MWzID5uDh2QCgssxfVNSZYmA3Z4lmXQAQy0ZMrX\nlWWpOnzLRRt6ZHzwzHZKHDPGH6pdIqM3gmnAfTNlLI/WNPWDLufmgGrEIwCPV0Y9\nXChdOlFhAgMBAAECggEAEAvM+v5NgsrWRaS6f5wBGtSTRuRZxQ5FRFvoXut3paGv\nU8lHWUO2mLKlIp11JcxVtCm86qDXvky8pVoKsewbYc/S/GpHj1hHME0KTXEy1dtv\nPduQDCce4AiQZVtPb6EIwEpkb/KNqJK95rg1lQfU0zmrX2PnrjciR0s9m2a4bfQw\nUifktd595wUB17vRhkshSdOJlAJniJ3JDGd1q2DBFrsXFtxmHMAozhIzlr0m11z3\nQdBt0VQYSn6lvi4EDkQKMYtNA1Vj4Pj9iaJSkWrzeyeqJ5pfj+JlmthBy4Wlu7wn\nCuQhBjs321YS9joFYH9qPr5ipwi2RvEd+S7bzR87BQKBgQC+M7baJhy1yMOdf3aw\n7Edatqv46eDhDIiPhdbkgx6jK+9Nf0PhlzNsjM0AM59eME2K9ZJ9tX9PhSkRHbJT\nJ+hJdLC75zahe5TeaNwXqTSXQWBn7/qhejdTMLTSMfh6DnDPLd0If5tLpu/Irx6X\nqFHM7LNHdWqvBYLNYDt/pMvDzQKBgQC85z+wrCgB1h7fc08M3hohmpTTTyScIPiU\n01LJNqeSSmLXJOEf+gx6lM4kgivDyzposCAAuT3Cu49AOAnHf0kw1sfX0wewXuuz\nUbZ8006huSy0dDrj1W4GiVQ55LyFaUnb7bnqsUF/7UCwN38Q3nMhTue/nxEbMzjL\nxnj0Oo/X5QKBgAfHJZsWI+ZrJ1SxebESeHiFL9Ml/UQ2tv7ngjomAoK5sTeCFMyM\n2lV+DIQNmF7JquIb2Lm7SlF+KIfCpyAvaZhXZULJ2boQy62srBNrn/LvgXm+nokr\n7kdAnqRZ1sdm/8X5IijOzxLw6K1UO/QHthCjPVGWw54Uo5yyarx1iL+hAoGBAJE/\nIbqfdJeM4uofCD41nFQQPrSHWvftZhVQs4vhSVFzfrI8OhlTMzshpatup2YBomSS\nX9kOlc1gV9IiBGrvlQBHdRueuH/FTGfxwWYTN5ekARqzcAB0wAeomil1lfrirRa8\noEIzjtBlRWL5GOuIj2+h8xFkpkuKw/XzIldvm+B9AoGAHZ7J4ck8FU57brujxR+P\n2QedOBZz3HEXbEZgyYJKbvvQgpzHoicwYqff/fn/xNnLQMR8Om1yS3yjCxCg9SY2\n7LxCqFoR2L5vjnTruzDwxtczIaCwRRmMJNpQaHQBQdFXrdaVzMm5KMw9cVs5l6LY\nTVzHWNZoGYq7KelmWgGgCVI=\n-----END PRIVATE KEY-----\n",
+  "client_email": "image-upload-tutorial@hireacross.iam.gserviceaccount.com",
+  "client_id": "113686335181465366556",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/image-upload-tutorial%40hireacross.iam.gserviceaccount.com"
+}
