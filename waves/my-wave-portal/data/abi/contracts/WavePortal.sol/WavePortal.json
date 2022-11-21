@@ -1,7 +1,0 @@
-[
-  "event NewWave(address indexed from, uint256 timestamp, string message)",
-  "function getAllWaves() view returns (tuple[])",
-  "function getTotalWaves() view returns (uint256)",
-  "function lastWavedAt(address) view returns (uint256)",
-  "function wave(string _message)"
-]
