@@ -1,12 +1,12 @@
 import { CgCloseR } from "react-icons/cg";
 import { GiPlainCircle } from "react-icons/gi";
 import { FaStop } from "react-icons/fa";
-
-
 import { useState } from "react";
 import DropDownMenu from "./DropDownMenu";
 
+
 const NoteTaker = ({ setNoteExpanded }) => {
+
     const [isRecording, setIsRecording] = useState(false)
     return (
         <div
