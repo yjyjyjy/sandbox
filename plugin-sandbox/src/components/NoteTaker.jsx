@@ -10,7 +10,7 @@ const NoteTaker = ({ setNoteExpanded }) => {
     const [isRecording, setIsRecording] = useState(false)
     return (
         <div
-            className='absolute h-[500px] w-[400px] left-10 top-10 shadow-lg rounded-md flex-col justify-center items-center bg-white border'
+            className='absolute h-[500px] w-[400px] min-h-[300px] min-w-[300px] resize overflow-auto left-10 top-10 shadow-lg rounded-md flex flex-col justify-center bg-white border'
             style={{ zIndex: 1000 }}
         >
             {/* header */}
@@ -35,19 +35,18 @@ const NoteTaker = ({ setNoteExpanded }) => {
             </div>
 
             {/* Note taking */}
-            <div className="py-2 px-4">
+            <div className="py-2 px-4 flex flex-col grow">
+                {/* TODO: Name, Role, Round, Interviewer */}
                 <label htmlFor="comment" className="block text-sm font-medium text-gray-700">
-                    Add your comment
+                    Interview Note
                 </label>
-                <div className="mt-1">
-                    <textarea
-                        rows={10}
-                        name="comment"
-                        id="comment"
-                        className="block w-full rounded-md border border-gray-200 shadow-sm sm:text-sm p-2"
-                        defaultValue={''}
-                    />
-                </div>
+                <textarea
+                    rows={3}
+                    name="comment"
+                    id="comment"
+                    className="block w-full h-full rounded-md border border-gray-200 shadow-sm mt-2 sm:text-sm p-2"
+                    defaultValue={''}
+                />
             </div>
         </div>
     );
