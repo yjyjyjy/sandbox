@@ -12,13 +12,15 @@ function App() {
     "Frontend Eng",
     "Data Eng"
   ])
+  const [note, setNote] = useState('')
 
   const [noteExpanded, setNoteExpanded] = useState(false)
   return (
     <RinaNoteContxt.Provider
       value={{
         template, setTemplate,
-        templateOptions, setTemplateOptions
+        templateOptions, setTemplateOptions,
+        note, setNote
       }}
     >
       <div className="App">

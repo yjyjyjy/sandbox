@@ -35,7 +35,20 @@ const NoteTaker = ({ setNoteExpanded }) => {
             </div>
 
             {/* Note taking */}
-            <span className='text-black text-lg font-bold'>NoteTaker</span>
+            <div className="py-2 px-4">
+                <label htmlFor="comment" className="block text-sm font-medium text-gray-700">
+                    Add your comment
+                </label>
+                <div className="mt-1">
+                    <textarea
+                        rows={10}
+                        name="comment"
+                        id="comment"
+                        className="block w-full rounded-md border border-gray-200 shadow-sm sm:text-sm p-2"
+                        defaultValue={''}
+                    />
+                </div>
+            </div>
         </div>
     );
 };
