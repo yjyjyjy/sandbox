@@ -1,5 +1,8 @@
 # Allow a dummy project in this directory for testing purposes
 myproject
+*.mp3
+*.webm
+
 
 /node_modules
 /.idea
