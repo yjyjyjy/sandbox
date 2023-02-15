@@ -2,6 +2,7 @@
 myproject
 *.mp3
 *.webm
+*.pdf
 
 
 /node_modules

@@ -1,6 +1,6 @@
 import openai as ai
 from pymongo import MongoClient
-import pandas as pd
+
 import time
 import subprocess
 import ffmpeg
@@ -25,7 +25,80 @@ def get_database():
     return client["rina"]
 
 
-ai.api_key = os.getenv("OPEN_AI_API_KEY")
+from dotenv import load_dotenv
+
+load_dotenv()
+import os
+import openai
+
+openai.api_key = os.getenv("OPEN_AI_API_KEY")
+from openai.embeddings_utils import get_embedding, cosine_similarity
+import pandas as pd
+from PyPDF2 import PdfReader
+
+PATH = "resumes"
+
+
+def extract_resume_text(filename):
+    reader = PdfReader(PATH + "/" + filename)
+    text = ""
+    for p in reader.pages:
+        pageText = p.extract_text()
+        text += pageText
+    return text
+
+
+def get_embedding(text, model="text-embedding-ada-002"):
+    text = text.replace("\n", " ")
+    return openai.Embedding.create(input=[text], model=model)["data"][0]["embedding"]
+
+
+resumeFileNames = os.listdir(PATH)
+dataList = []
+for filename in resumeFileNames:
+    text = extract_resume_text(filename)
+    dataList.append({"name": filename, "resume": text})
+df = pd.DataFrame(dataList)
+
+df["ada_embedding"] = df.resume.apply(lambda x: get_embedding(x, model="text-embedding-ada-002"))
+# df.to_csv('output/embedded_1k_reviews.csv', index=False)
+
+
+jd = """
+Cryptosat is looking for a senior software engineer to join us in developing blockchain applications based on the interaction between ground and satellite software. We are a small team in a well-funded, early-stage startup. This position provides ample opportunity for technical leadership, ownership, and cross-functional impact, with minimal oversight and a large degree of independence. The position can be remote.
+
+
+
+Desired Qualifications
+
+Must-Have:
+
+Industry experience with either C++/Rust/Go or equivalent systems languages
+Experience with development for Blockchains such as Bitcoin, Ethereum, etc.
+Experience with developing smart contracts over one of the major chains
+Working knowledge of Python.
+Thrives in an ambiguous and uncertain environment.
+Independent and self-directed. Able to operate with minimal guidance.
+
+
+Plus:
+
+BSc in computer science or related field
+Familiarity with cryptography algorithms such as RSA, Diffie Helman, and Elliptic Curves cryptography.
+Experience with Solidity
+Working knowledge of Golang
+"""
+
+
+def search_resumes(df, jd, n=3, pprint=True):
+    embedding = get_embedding(jd, model="text-embedding-ada-002")
+    df["similarities"] = df.ada_embedding.apply(lambda x: cosine_similarity(x, embedding))
+    res = df.sort_values("similarities", ascending=False).head(n)
+    return res
+
+
+res = search_resumes(df, jd=jd, n=10)
+
 
 meetingId = "6b90376f-43eb-49d7-9e0a-f774d02cbc8e"
 dbname = get_database()
@@ -57,7 +130,9 @@ def groomSlicer(slicerDf):  # assemble the transcripts
 
 
 sTemp = groomSlicer(slicerDf)
-sTemp = sTemp[sTemp.transcript.apply(lambda x: len(x.split(" "))) > 3] # remove the very short ones (usually just making noises to show attention)
+sTemp = sTemp[
+    sTemp.transcript.apply(lambda x: len(x.split(" "))) > 3
+]  # remove the very short ones (usually just making noises to show attention)
 sTemp = sTemp.reset_index()[sTemp.columns]
 slicer = groomSlicer(sTemp)
 
