@@ -1,0 +1,33 @@
+webui-docker-auto-1  | Mounted .cache
+webui-docker-auto-1  | Mounted LDSR
+webui-docker-auto-1  | Mounted BLIP
+webui-docker-auto-1  | Mounted Hypernetworks
+webui-docker-auto-1  | Mounted VAE
+webui-docker-auto-1  | Mounted GFPGAN
+webui-docker-auto-1  | Mounted RealESRGAN
+webui-docker-auto-1  | Mounted Deepdanbooru
+webui-docker-auto-1  | Mounted ScuNET
+webui-docker-auto-1  | Mounted .cache
+webui-docker-auto-1  | Mounted StableDiffusion
+webui-docker-auto-1  | Mounted embeddings
+webui-docker-auto-1  | Mounted ESRGAN
+webui-docker-auto-1  | Mounted config.json
+webui-docker-auto-1  | Mounted SwinIR
+webui-docker-auto-1  | Mounted Lora
+webui-docker-auto-1  | Mounted MiDaS
+webui-docker-auto-1  | Mounted ui-config.json
+webui-docker-auto-1  | Mounted BSRGAN
+webui-docker-auto-1  | Mounted Codeformer
+webui-docker-auto-1  | Mounted extensions
+webui-docker-auto-1  | Removing empty folder: /stable-diffusion-webui/models/BSRGAN
+webui-docker-auto-1  | Loading weights [cc6cb27103] from /stable-diffusion-webui/models/Stable-diffusion/v1-5-pruned-emaonly.ckpt
+webui-docker-auto-1  | Creating model from config: /stable-diffusion-webui/configs/v1-inference.yaml
+webui-docker-auto-1  | LatentDiffusion: Running in eps-prediction mode
+webui-docker-auto-1  | DiffusionWrapper has 859.52 M params.
+webui-docker-auto-1  | Applying xformers cross attention optimization.
+webui-docker-auto-1  | Textual inversion embeddings loaded(0):
+webui-docker-auto-1  | Model loaded in 5.6s (load weights from disk: 2.3s, create model: 0.8s, apply weights to model: 1.1s, apply half(): 0.3s, load VAE: 1.0s).
+webui-docker-auto-1  | Running on local URL:  http://0.0.0.0:7860
+webui-docker-auto-1  | Running on public URL: https://c2067eb3-8d53-4563.gradio.live
+webui-docker-auto-1  |
+webui-docker-auto-1  | This share link expires in 72 hours. For free permanent hosting and GPU upgrades (NEW!), check out Spaces: https://huggingface.co/spaces

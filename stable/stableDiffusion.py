@@ -1,14 +1,40 @@
-import openai as ai
-from pymongo import MongoClient
-import pandas as pd
-import time
-import subprocess
-import ffmpeg
 from dotenv import load_dotenv
 
 load_dotenv()
-import os
-import copy
+# import os
+# import copy
+
+
+# import openai as ai
+# from pymongo import MongoClient
+
+
+import banana_dev as banana
+import base64
+import uuid
+
+api_key = "52e1121d-b200-4917-bf54-266fde9b2558"
+# model_key = "80fcb645-edac-4180-a288-024c6db571c4" # original 2.1
+# model_key = "f0b3590c-d066-43da-8645-a51c71e654c6"  # cloned 2.1
+model_key = "e58d77c9-f817-418f-980c-72a59c49111f"  # from AWS 1
+
+
+model_inputs = {
+    "prompt": "Super realistic, Beautiful Asian girl, Beautiful eyes, full body picture, with face, facing camera, business outfit, cute",
+    "height": 512,
+    "width": 512,
+    "steps": 20,
+    "guidance_scale": 8,
+    "seed": None,
+}
+
+# Run the model
+out = banana.run(api_key, model_key, model_inputs)
+coded_string = out["modelOutputs"][0]["image_base64"]
+img_data = base64.b64decode(coded_string)
+filename = str(uuid.uuid1())
+with open(f"images/{filename}.png", "wb") as fh:
+    fh.write(base64.b64decode(coded_string))
 
 
 # >>>>>>>>> Get Slicer <<<<<<<<<<<<
@@ -26,6 +52,7 @@ def get_database():
 
 
 ai.api_key = os.getenv("OPEN_AI_API_KEY")
+
 
 meetingId = "6b90376f-43eb-49d7-9e0a-f774d02cbc8e"
 dbname = get_database()
@@ -57,7 +84,9 @@ def groomSlicer(slicerDf):  # assemble the transcripts
 
 
 sTemp = groomSlicer(slicerDf)
-sTemp = sTemp[sTemp.transcript.apply(lambda x: len(x.split(" "))) > 3] # remove the very short ones (usually just making noises to show attention)
+sTemp = sTemp[
+    sTemp.transcript.apply(lambda x: len(x.split(" "))) > 3
+]  # remove the very short ones (usually just making noises to show attention)
 sTemp = sTemp.reset_index()[sTemp.columns]
 slicer = groomSlicer(sTemp)
 

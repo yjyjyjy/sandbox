@@ -1,0 +1,12 @@
+#!/bin/bash
+/bin/ec2metadata >meta.txt
+prefix="instance-id: "
+while IFS= read -r line
+do
+        if [[ "$line" == *"instance-id"* ]]
+        then
+                id=${line#"$prefix"}
+        fi
+done <meta.txt
+echo $id
+cmd=$(curl -d '{"instanceId":"$id"}' -H "Content-Type: application/json" -X POST https://a1-rouge.vercel.app/api/instance/register)
